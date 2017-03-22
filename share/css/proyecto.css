@@ -1,0 +1,253 @@
+@font-face
+{
+	font-family: Mistral;
+	src: url("../fonts/mistral.TTF");
+}
+@font-face
+{
+	font-family: OpenSans-Regular;
+	src: url("../fonts/OpenSans-Regular.ttf");
+}
+@font-face
+{
+	font-family: Rajdhani-Regular;
+	src: url("../fonts/Rajdhani-Regular.ttf");
+}
+
+@font-face
+{
+	font-family: Sloppy-Hand;
+	src: url("../fonts/Sloppy-Hand.ttf");
+}
+
+@font-face
+{
+	font-family: Lorem;
+	src: url("../fonts/lorem.ttf");
+}
+
+@font-face
+{
+	font-family: Bunny;
+	src: url("../fonts/Bunny.ttf");
+}
+.jumbotron{
+	padding-bottom: 0px;
+	padding-top: 0px;
+	height: 300px;
+	margin: 0px;
+}
+#jumbotron1{
+	background-color: rgb(48, 40, 40);
+	background-attachment: fixed;
+	z-index: 1500;
+	height: 144px;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	position: fixed;	
+}
+.container{
+
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+#logo {
+	margin-top: 30px;
+	padding-right: 0px;
+	padding-left: 0px;
+	text-align: right;
+}
+#logo .img-circle {
+	width: 66px;
+	height: 66px;
+}
+#text-logo {
+	margin-left: 0px;
+	text-align: justify;	
+	margin-top: 32px; 
+	font-family: 'Muli', serif;
+}
+.img-responsive{
+	float: right;
+	width: 66px;
+	height: 66px;
+}
+#text-logo p {
+
+	margin-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px; 
+	color: white; font-size: 0.7em;
+}
+
+#text-logo h2 {
+
+	text-align: left;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px; 
+	color: white; font-size: 1.5em;
+}
+
+#CONTROL {
+
+	margin-top: 64px;
+
+}
+#CONTROL img {
+	margin-right: 4px;
+	margin-top: 0px;
+	width: 16px;
+	height: 16px;
+	display: inline;
+}
+
+#CONTROL a {
+
+	outline: none;
+	display: inline;
+}
+
+#CONTROL a:hover, #CONTROL a:link, #CONTROL a:visited, #CONTROL a:active {
+	text-decoration: none;
+}
+
+#CONTROL p {
+
+	margin-left: 2px;
+	margin-top: 6px;
+	color: rgba(245, 239, 234, 0.8);
+	font-family: calibri;
+	font-size: 1em;
+	display: inline;
+}
+
+#jumbotron2 {
+
+    height: 464px;
+    background-color: black;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 0px;
+    padding-top: 144px;
+}
+
+#carousel {
+	
+	margin-bottom: 0px;
+	margin-top: 0px;
+	height: 320px;
+}
+ 
+
+#carousel .item {
+	font-family: OpenSans-Regular;
+	font-size: 3em;
+	height: 320px; 
+}
+
+#myCarousel {
+	margin-top: 0px; 
+	margin-bottom: 0px; 
+	padding: 0px;
+}
+
+.carousel-inner > .item > img {
+	height: 100%;
+}
+#espacio1{
+	background-image: url("../images/parallax/parallax1.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#espacio2 {
+	background-image: url("../images/parallax/parallax2.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#titulo, #objetivos, #introduccion {
+	text-align: center;
+	background-color: rgb(245, 239, 234);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: rgba(35, 28, 28, 1);
+}
+
+#titulo .row, #objetivos .row, #introduccion .row {
+	padding-top: 48px;
+	padding-bottom: 64px;
+	max-width: 70%;
+	margin: auto;
+}
+
+#titulo .col-md-12, #objetivos .col-md-12, #introduccion .col-md-12 {
+	margin-bottom: 48px;
+}
+
+#titulo .col-md-12 h2, #objetivos .col-md-12 h2, #introduccion .col-md-12 h2 {
+	font-size: 1.8em;
+}
+
+#titulo .col-md-12 p, #objetivos .col-md-12 p, #introduccion .col-md-12 p {
+	font-size: 1.1em;
+}
+
+#objetivos .col-md-12 h2+p {
+	margin-top: 48px;
+}
+
+#objetivos .col-md-12 p+h2 {
+	margin-top: 128px;
+}
+
+#objetivos .col-md-12 ul {
+	padding-left: 1em;
+	margin-top: 24px;
+}
+
+#objetivos .col-md-12 p, #objetivos .col-md-12 li {
+	text-align: justify;
+	margin-top: 24px;
+}
+
+#titulo .col-md-6 p+h2, #objetivos .col-md-6 p+h2, #introduccion .col-md-6 p+h2 {
+	margin-top: 48px;
+}
+
+#titulo .col-md-6 h2, #objetivos .col-md-6 h2, #introduccion .col-md-6 h2 {
+	text-align: left;
+	font-family: calibri;
+	font-size: 1.5em;
+}
+
+#titulo .col-md-6 p, #objetivos .col-md-6 p, #introduccion .col-md-6 p {
+	text-align: justify;
+	font-family: calibri;
+	font-size: 1em;
+}
+
+#footer {
+	padding-top: 24px;
+	background-color: rgb(48, 40, 40);
+	overflow: 0px;
+	padding-bottom: 32px;
+}
+#footer .row {
+	width: 70%;
+	padding-top: 24px;
+	margin: auto;
+}
+
+#footer-text p {
+	color: white;	
+	font-size: 0.8em;
+}

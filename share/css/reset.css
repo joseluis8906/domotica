@@ -1,0 +1,172 @@
+@font-face
+{
+    font-family: Cantarell;
+    src: url("../fonts/Cantarell-Regular.ttf");  
+}
+@font-face
+{
+    font-family: Calibri;
+    src: url("../fonts/Calibri.ttf");
+}
+@font-face
+{
+    font-family: CalibriBold;
+    src: url("../fonts/Calibri-Bold.ttf");
+}
+@font-face
+{
+    font-family: ComicSansMsBold;
+    src: url("../fonts/Comic-Sans-Ms-Bold.ttf");
+}
+html, body, div, span, applet, object, iframe, h1, 
+h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, 
+address, big, cite, code, del, dfn, em, font, img, ins, kbd, 
+q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, 
+center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td, input, option, select, textarea
+{
+    border:  none;
+    margin: 0;
+    padding: 0;
+    background: transparent no-repeat scroll;
+    outline-style: none;
+    font-family: Cantarell;
+    font-size: 11pt;
+    font-size: 100%;
+    font-size-adjust: none;
+    font-stretch: expanded;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    outline-color: transparent;
+    outline-width: none;
+    outline-offset: 0px;
+    vertical-align: baseline;
+    line-height: normal;
+}
+html
+{
+    max-width: auto;
+    max-height: auto;
+    width: auto;
+    height: auto;
+    padding: none;
+    margin: none;
+    overflow: hidden;
+}
+body
+{
+    font-size: 11pt;
+    padding: none;
+    margin: none;
+    overflow: hidden;
+    background: black;
+}
+img, fieldset
+{
+  border:  none;
+}
+address, caption, cite, code, dfn, em, strong, th, var
+{
+  font-weight: normal;
+  font-style: normal;
+}
+li
+{
+  list-style-image: none;
+  list-style-type: none;
+  list-style-position: outside;
+}
+caption, th
+{
+  text-align: left;
+}
+h1, h2, h3, h4, h5, h6
+{
+  font-weight: normal;
+  font-size: 100%;
+}
+h1
+{
+  font-family: Ubuntu-b;
+  font-size: 180%;
+  color: rgba(255,255,255,1);
+  text-shadow: 1px 1px 1px rgba(0,0,0,.66);
+}
+h2
+{
+  font-size: 150%;
+  font-family: Ubuntu-b;
+  text-transform: none;
+}
+h3
+{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 115%;
+  text-transform: none;
+}
+h4
+{
+  font-style: normal;
+  font-weight: lighter;
+  line-height: 3;
+}
+input, textarea {
+  outline: none;
+  font-size-adjust: none;
+}
+select, textarea {
+  outline: none;
+  text-outline: none;
+  text-decoration: none;
+  text-emphasis: none;
+  text-shadow: none;
+}
+optgroup
+{
+	background: transparent;
+}
+select option
+{
+	padding: none;
+	margin: none;
+	background: transparent;
+}
+html
+{
+	width:100%;
+	height: 100%
+}
+body *
+{
+	margin: 0;
+	padding: 0
+}
+body
+{
+	width: 100%;
+	height: 100%;
+}
+input[type=range], input[type=range]:focus, input[type=range]:active, input[type=range]:hover {
+    outline: none;
+    outline-color: transparent;
+    outline-width: 0px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    border-width: 0;
+    border-color: transparent;
+}
+::-webkit-input-placeholder{
+    color: rgba(240,255,255,1);
+    opacity: 1;
+}
+::-moz-placeholder {
+    color: rgba(240,255,255,1);
+    opacity: 1;
+}
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}

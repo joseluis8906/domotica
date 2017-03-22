@@ -1,0 +1,24 @@
+.fixed img{
+        position: fixed;
+        width: 25%;
+}
+.scrollit img{
+        float: left;
+        width: 71%
+}
+.parallax {
+    /* The image used */
+    background-image: url('../imagen/2.jpg');
+
+    /* Full height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body, html {
+    height: 100%;
+}
