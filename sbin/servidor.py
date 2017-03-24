@@ -19,41 +19,41 @@ class Domotica(object):
         
     #Ventilador
     PinVentilador = "P9_14"
-    #PWM.start (PinVentilador, 0, 7000, 0)
+    PWM.start (PinVentilador, 0, 7000, 0)
     ventiladorlevel = 0
     
     #Ventanas
     PinVentanasAbrir = "P9_21"
     PinVentanasCerrar = "P9_22"
-    #GPIO.setup(PinVentanasAbrir, GPIO.OUT)
-    #GPIO.setup(PinVentanasCerrar, GPIO.OUT)
+    GPIO.setup(PinVentanasAbrir, GPIO.OUT)
+    GPIO.setup(PinVentanasCerrar, GPIO.OUT)
 
     #Bombillos
     PinBombillo1 = "P9_12"
-    #GPIO.setup(PinBombillo1, GPIO.OUT)
+    GPIO.setup(PinBombillo1, GPIO.OUT)
     bombillo1estado = False
     
     PinBombillo2 = "P9_18"
-    #GPIO.setup(PinBombillo2, GPIO.OUT)
+    GPIO.setup(PinBombillo2, GPIO.OUT)
     bombillo2estado = False
     
     PinBombillo3 = "P9_24"
-    #GPIO.setup(PinBombillo3, GPIO.OUT)
+    GPIO.setup(PinBombillo3, GPIO.OUT)
     bombillo3estado = False
     
     PinBombillo4 = "P9_26"
-    #GPIO.setup(PinBombillo4, GPIO.OUT)
+    GPIO.setup(PinBombillo4, GPIO.OUT)
     bombillo4estado = False
     
     PinBombillo5 = "P9_30"
-    #GPIO.setup(PinBombillo5, GPIO.OUT)
+    GPIO.setup(PinBombillo5, GPIO.OUT)
     bombillo5estado = False
     
     #Persianas
     PinPersianasAbrir = "P9_25"
     PinPersianasCerrar = "P9_27"
-    #GPIO.setup(PinPersianasAbrir, GPIO.OUT)
-    #GPIO.setup(PinPersianasCerrar, GPIO.OUT) 
+    GPIO.setup(PinPersianasAbrir, GPIO.OUT)
+    GPIO.setup(PinPersianasCerrar, GPIO.OUT) 
     
     #DHT
     llueve = False
