@@ -515,6 +515,43 @@ PersianasCtrl.prototype.PararEvent = function ()
 };
 
 
+//class EscenasCtrl
+function EscenasCtrl ()
+{
+    Gwt.Gui.Frame.call (this);
+    //instance props
+    this.Container = new Gwt.Gui.VBox (12);
+    this.BtnDeViaje = new Gwt.Gui.Button (Gwt.Core.Contrib.Images + "appbar.list.reorder.up.svg", "De Viaje");
+    this.BtnAlarma = new Gwt.Gui.Button (Gwt.Core.Contrib.Images + "appbar.timer.svg", "Alarma");
+    this.BtnLlegandoACasa = new Gwt.Gui.Button (Gwt.Core.Contrib.Images + "appbar.list.reorder.down.svg", "LLegando A Casa");
+            
+    //methods
+    this.SetSize (200, 200);
+    this.SetMarginTop (16);
+    
+    this.Container.SetSize (this.GetWidth(), this.GetHeight ());
+    this.Container.SetAlignment (Gwt.Gui.ALIGN_CENTER);
+    this.Add (this.Container);
+    
+    this.BtnDeViaje.SetWidth (96);
+    this.BtnDeViaje.SetMarginTop (24);
+    this.Container.Add(this.BtnDeViaje);
+    
+    this.BtnAlarma.SetWidth (96);
+    this.Container.Add (this.BtnAlarma);
+    
+    this.BtnLlegandoACasa.SetWidth (152);
+    this.Container.Add (this.BtnLlegandoACasa);
+    
+    //this.BtnDeViaje.AddEvent (Gwt.Gui.Event.Mouse.Click, this.AbrirEvent.bind(this));
+    //this.BtnCerrar.AddEvent (Gwt.Gui.Event.Mouse.Click, this.CerrarEvent.bind(this));
+    //this.BtnParar.AddEvent (Gwt.Gui.Event.Mouse.Click, this.PararEvent.bind(this));
+}
+
+EscenasCtrl.prototype = new Gwt.Gui.Frame ();
+EscenasCtrl.prototype.constructor = EscenasCtrl;
+
+
 //Class domotictrl
 var instance;
 
@@ -524,7 +561,7 @@ function domotictrl ()
     
     
     var WIDTH = 640;
-    var HEIGHT = 320;
+    var HEIGHT = 376;
     
     this.Layout = new Gwt.Gui.HBox(0);
     this.Col1 = new Gwt.Gui.VBox (0);
@@ -541,6 +578,7 @@ function domotictrl ()
     this.VentanasCtrl = new VentanasCtrl ();
     this.LuzCtrl = new LuzCtrl ();
     this.PersianasCtrl = new PersianasCtrl ();
+    this.EscenasCtrl = new EscenasCtrl ();
         
     this.SetSize (WIDTH, HEIGHT);
     this.SetPosition (Gwt.Gui.WIN_POS_CENTER);
@@ -581,7 +619,7 @@ function domotictrl ()
     this.PanelCtrlTilte.SetHeight (32);
     this.PanelCtrlTilte.SetMarginTop (10);
     this.PanelCtrlHeadBox.Add (this.PanelCtrlTilte);
-    
+
     this.VentiladorPanelCtrl = new PanelItem (this.Col2.GetWidth(), 56, "Control De Ventilador", Gwt.Core.Contrib.Images + "appbar.fan.box.svg");
     this.VentiladorPanelCtrl.AddEvent (Gwt.Gui.Event.Mouse.Click, this.EventVentilador.bind(this));
     this.Col2.Add (this.VentiladorPanelCtrl);
@@ -598,10 +636,17 @@ function domotictrl ()
     this.PersianasPanelCtrl.AddEvent (Gwt.Gui.Event.Mouse.Click, this.EventPersianas.bind(this));
     this.Col2.Add (this.PersianasPanelCtrl);
     
+    this.EscenasPanelCtrl = new PanelItem (this.Col2.GetWidth(), 56, "Escenas", Gwt.Core.Contrib.Images + "appbar.cog.svg");
+    this.EscenasPanelCtrl.AddEvent (Gwt.Gui.Event.Mouse.Click, this.EventEscenas.bind(this));
+    this.Col2.Add (this.EscenasPanelCtrl);
+
     this.Col1.Add (this.VentiladorCtrl);
     this.Col1.Add (this.VentanasCtrl);
     this.Col1.Add (this.LuzCtrl);
     this.Col1.Add (this.PersianasCtrl);
+    this.Col1.Add (this.EscenasCtrl);
+
+    this.EventVentilador();
 }
 
 domotictrl.prototype = new Gwt.Gui.Window ();
@@ -640,12 +685,20 @@ domotictrl.prototype.EventPersianas = function ()
     this.PersianasCtrl.SetDisplay (Gwt.Gui.Contrib.Display.Block);
 };
 
+domotictrl.prototype.EventEscenas = function ()
+{
+    this.Title.SetText ("Escenas");
+    this.HiddenAllCtrl ();
+    this.EscenasCtrl.SetDisplay (Gwt.Gui.Contrib.Display.Block);
+};
+
 domotictrl.prototype.HiddenAllCtrl = function ()
 {
     this.VentiladorCtrl.SetDisplay (Gwt.Gui.Contrib.Display.None);
     this.VentanasCtrl.SetDisplay (Gwt.Gui.Contrib.Display.None);
     this.LuzCtrl.SetDisplay (Gwt.Gui.Contrib.Display.None);
     this.PersianasCtrl.SetDisplay (Gwt.Gui.Contrib.Display.None);
+    this.EscenasCtrl.SetDisplay (Gwt.Gui.Contrib.Display.None);
 };
 
 
