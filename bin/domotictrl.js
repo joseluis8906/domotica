@@ -519,37 +519,121 @@ PersianasCtrl.prototype.PararEvent = function ()
 function EscenasCtrl ()
 {
     Gwt.Gui.Frame.call (this);
+    
     //instance props
-    this.Container = new Gwt.Gui.VBox (12);
-    this.BtnDeViaje = new Gwt.Gui.Button (Gwt.Core.Contrib.Images + "appbar.list.reorder.up.svg", "De Viaje");
-    this.BtnAlarma = new Gwt.Gui.Button (Gwt.Core.Contrib.Images + "appbar.timer.svg", "Alarma");
-    this.BtnLlegandoACasa = new Gwt.Gui.Button (Gwt.Core.Contrib.Images + "appbar.list.reorder.down.svg", "LLegando A Casa");
-            
+    this.Btn1State = false;
+    this.Btn2State = false;
+    this.Btn3State = false;
+    this.TimerVacaiones = null;
+    this.Luz1 = null;
+    this.Luz2 = null;
+    
+    this.Container = new Gwt.Gui.VBox(7);
+    this.Row1 = new Gwt.Gui.HBox (7);
+    this.Row2 = new Gwt.Gui.HBox (7);
+    this.Row3 = new Gwt.Gui.HBox (7);
+    
+    this.Text1 = new Gwt.Gui.StaticText ("Vacaciones");
+    this.Text2 = new Gwt.Gui.StaticText ("Alarma");
+    this.Text3 = new Gwt.Gui.StaticText ("LLegando a casa");
+    
+    this.BtnEscena1 = new Gwt.Gui.ButtonOnOff ();
+    this.BtnEscena2 = new Gwt.Gui.ButtonOnOff ();
+    this.BtnEscena3 = new Gwt.Gui.ButtonOnOff ();
+    
     //methods
     this.SetSize (200, 200);
     this.SetMarginTop (16);
     
-    this.Container.SetSize (this.GetWidth(), this.GetHeight ());
-    this.Container.SetAlignment (Gwt.Gui.ALIGN_CENTER);
+    this.Container.SetSize (this.GetWidth (), this.GetHeight ());
     this.Add (this.Container);
     
-    this.BtnDeViaje.SetWidth (96);
-    this.BtnDeViaje.SetMarginTop (24);
-    this.Container.Add(this.BtnDeViaje);
+    this.Container.Add (this.Row1);
+    this.Container.Add (this.Row2);
+    this.Container.Add (this.Row3);
     
-    this.BtnAlarma.SetWidth (96);
-    this.Container.Add (this.BtnAlarma);
+    this.Text1.SetSize (140, 26);
+    this.Text1.SetExpand (false);
+    this.Row1.Add (this.Text1);
+    this.Row1.Add (this.BtnEscena1);
     
-    this.BtnLlegandoACasa.SetWidth (152);
-    this.Container.Add (this.BtnLlegandoACasa);
+    this.Text2.SetSize (140, 26);
+    this.Text2.SetExpand (false);
+    this.Row2.Add (this.Text2);
+    this.Row2.Add (this.BtnEscena2);
     
-    //this.BtnDeViaje.AddEvent (Gwt.Gui.Event.Mouse.Click, this.AbrirEvent.bind(this));
-    //this.BtnCerrar.AddEvent (Gwt.Gui.Event.Mouse.Click, this.CerrarEvent.bind(this));
-    //this.BtnParar.AddEvent (Gwt.Gui.Event.Mouse.Click, this.PararEvent.bind(this));
+    this.Text3.SetSize (140, 26);
+    this.Text3.SetExpand (false);
+    this.Row3.Add (this.Text3);
+    this.Row3.Add (this.BtnEscena3);
+    
+    this.BtnEscena1.AddEvent (Gwt.Gui.Event.Mouse.Click, this.Btn1Event.bind(this));
+    //this.BtnBulb2.AddEvent (Gwt.Gui.Event.Mouse.Click, this.Btn2Event.bind(this));
+    //this.BtnBulb3.AddEvent (Gwt.Gui.Event.Mouse.Click, this.Btn3Event.bind(this));
+    
+    //new Gwt.Core.Rpc('/serverstate').Send({}, this.InitState.bind(this));
+     
+    //clearInterval (window.LuzCtrlMonitor);
+    //window.LuzCtrlMonitor = setInterval (this.LuzCtrlMonitor.bind (this), 2000);
 }
 
 EscenasCtrl.prototype = new Gwt.Gui.Frame ();
 EscenasCtrl.prototype.constructor = EscenasCtrl;
+
+//Btn1 event
+EscenasCtrl.prototype.Btn1Event = function ()
+{
+    if(!this.Btn1State)
+    {
+        this.BtnEscena1.SetOn ();
+        this.Btn1State = true;
+        this.TimerVacaiones = setInterval (this.LuzAleatoria.bind(this), 1000*10);
+        //new Gwt.Core.Rpc('/bombillosctrl/1').Send({}, function (Res){console.log(Res);});
+    }
+    else
+    {
+        this.BtnEscena1.SetOff ();
+        this.Btn1State = false;
+        clearInterval (this.TimerVacaiones);
+        //new Gwt.Core.Rpc('/bombillosctrl/1').Send({}, function (Res){console.log(Res);});
+    }
+};
+
+EscenasCtrl.prototype.LuzAleatoria = function ()
+{
+    //console.log ("luz aleatoria");
+    var Luz1Antigua = 0;
+    var Luz2Antigua = 0;
+
+    if (this.Luz1 !== null && this.Luz2 !== null)
+    {
+        Luz1Antigua = this.Luz1;
+        Luz2Antigua = this.Luz2;
+        console.log ("Apagando luz1 : %0, luz2 : %1".replace("%0", this.Luz1).replace("%1", this.Luz2));
+        new Gwt.Core.Rpc('/bombillosctrl/%0'.replace("%0", this.Luz1)).Send({}, function (Res){console.log(Res);});
+        new Gwt.Core.Rpc('/bombillosctrl/%0'.replace("%0", this.Luz2)).Send({}, function (Res){console.log(Res);});
+    }
+    else
+    {
+        this.Luz1 = 1;
+        this.Luz2 = 2;
+    }
+    
+    this.Luz1 = Gwt.Core.Contrib.RandomInt (1,5);
+    while (this.Luz1===Luz1Antigua || this.Luz1===Luz2Antigua)
+    {
+        this.Luz1 = Gwt.Core.Contrib.RandomInt (1,5);
+    }
+    
+    this.Luz2 = Gwt.Core.Contrib.RandomInt (1,5);
+    while (this.Luz2===Luz2Antigua || this.Luz2===this.Luz1 || this.Luz2===Luz1Antigua)
+    {
+        this.Luz2 = Gwt.Core.Contrib.RandomInt (1,5);
+    }
+    console.log ("Encendiendo luz1 : %0, luz2 : %1".replace("%0", this.Luz1).replace("%1", this.Luz2));
+    new Gwt.Core.Rpc('/bombillosctrl/%0'.replace("%0", this.Luz1)).Send({}, function (Res){console.log(Res);});
+    new Gwt.Core.Rpc('/bombillosctrl/%0'.replace("%0", this.Luz2)).Send({}, function (Res){console.log(Res);});
+};
 
 
 //Class domotictrl
