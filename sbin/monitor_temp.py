@@ -13,20 +13,20 @@ import json
 file = open ("../etc/conf.json", "r")
 file_conf = file.read ()
 file.close ()
-    
+
 host_conf = json.loads (file_conf)
 
-IP = host_conf["IP"]
+IP = str(host_conf["IP"])
 PORT = host_conf["PORT"]
 
 
 if __name__ == "__main__":
-    
+
     PinSensor = 'P9_41'
     TipoSensor = Adafruit_DHT.DHT11
-    
+
     while (1):
-         
+
         humidity, temperature = Adafruit_DHT.read_retry(TipoSensor, PinSensor)
         if humidity is not None and temperature is not None:
             if (int(humidity) > 75):
@@ -34,6 +34,5 @@ if __name__ == "__main__":
                 req = urllib.urlopen("http://"+IP+":"+str(PORT)+"/ventanasctrl/cerrar")
             else:
                 req = urllib.urlopen("http://"+IP+":"+str(PORT)+"/lluviactrl/no")
-        
+
         time.sleep (2)
-        
