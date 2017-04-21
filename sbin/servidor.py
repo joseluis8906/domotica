@@ -28,7 +28,7 @@ PORT = host_conf["PORT"]
 def alarm_clock(signum, frame):
     req1 = urllib.urlopen("http://"+IP+":"+str(PORT)+"/bombillosctrl/1")
     req2 = urllib.urlopen("http://"+IP+":"+str(PORT)+"/ventanasctrl/abrir")
-    req3 = urllib.urlopen("http://"+IP+":"+str(PORT)+"/perianasctrl/abrir")
+    req3 = urllib.urlopen("http://"+IP+":"+str(PORT)+"/persianasctrl/abrir")
     req4 = urllib.urlopen("http://"+IP+":"+str(PORT)+"/alarmactrl/off/0/00_00_mm")
 
 signal.signal (signal.SIGALRM, alarm_clock)
