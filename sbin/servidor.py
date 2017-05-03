@@ -78,7 +78,7 @@ class Domotica(object):
     llueve = False
 
     #viaje
-    viaje = 0
+    viaje = ""
 
     #Alarma
     alarma = ""
