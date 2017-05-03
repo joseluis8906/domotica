@@ -251,7 +251,9 @@ class Domotica(object):
             res = json.dumps ({'status' : "off"})
         else:
             res = json.dumps ({'status' : "undefined"})
-:
+
+
+
     @cherrypy.expose
     def viajectrl (self, action, seconds_, alarma_):
         viaje = str(action)
