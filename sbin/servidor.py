@@ -77,6 +77,9 @@ class Domotica(object):
     #DHT
     llueve = False
 
+    #viaje
+    viaje = 0
+
     #Alarma
     alarma = ""
 
@@ -248,6 +251,18 @@ class Domotica(object):
             res = json.dumps ({'status' : "off"})
         else:
             res = json.dumps ({'status' : "undefined"})
+:
+    @cherrypy.expose
+    def viajectrl (self, action, seconds_, alarma_):
+        viaje = str(action)
+        if viaje=="on":
+            self.viaje = viaje
+            res = json.dumps ({'status' : "on"})
+        elif viaje=="off":
+            self.viaje = viaje
+            res = json.dumps ({'status' : "off"})
+        else:
+            res = json.dumps ({'status' : "undefined"})
 
         return res
 
@@ -263,7 +278,8 @@ class Domotica(object):
             'Bombillo3' : int(self.bombillo3estado),
             'Bombillo4' : int(self.bombillo4estado),
             'Bombillo5' : int(self.bombillo5estado),
-            'Alarma' : self.alarma
+            'Alarma' : self.alarma,
+            "LLegando" : self.llegando
         })
 
         return res

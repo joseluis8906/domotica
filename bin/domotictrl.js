@@ -76,7 +76,7 @@ function VentiladorCtrl ()
     this.Knob.AddEvent (Gwt.Gui.Event.Form.ContextMenu, this.EventKnobContextMenu.bind (this));
     this.Knob.AddEvent (Gwt.Gui.Event.Mouse.MouseDown, this.EventKnobClick.bind (this));
 
-    new Gwt.Core.Rpc('/serverstate').Send({}, function (Res){console.log(Res);});
+    new Gwt.Core.Rpc('/serverstate').Send({}, this.InitState.bind(this));
 }
 
 VentiladorCtrl.prototype = new Gwt.Gui.Frame ();
@@ -549,10 +549,24 @@ function WidgetClock ()
     this.Container.Add (this.Separator);
     this.Container.Add (this.Mins);
     this.Container.Add (this.AmPm);
+
+    new Gwt.Core.Rpc('/serverstate').Send({}, this.InitState.bind(this));
 }
 
 WidgetClock.prototype = new Gwt.Gui.Frame();
 WidgetClock.prototype.constructor = WidgetClock;
+
+WidgetClock.prototype.InitState = function (Res)
+{
+    if (Res.Alarma !== "00_00_mm")
+    {
+        var a = Res.Alarm.split ("_");
+
+        this.Hours.SetText (Number(a[0]));
+        this.Mins.SetText (Number(a[1]));
+        this.AmPm.SetText (Number(a[2]));
+    }
+}
 
 WidgetClock.prototype.SetOn = function ()
 {
@@ -698,10 +712,25 @@ function EscenasCtrl ()
 
     //clearInterval (window.LuzCtrlMonitor);
     //window.LuzCtrlMonitor = setInterval (this.LuzCtrlMonitor.bind (this), 2000);
+    new Gwt.Core.Rpc('/serverstate').Send({}, this.InitState.bind(this));
+
 }
 
 EscenasCtrl.prototype = new Gwt.Gui.Frame ();
 EscenasCtrl.prototype.constructor = EscenasCtrl;
+
+EscenasCtrl.prototype.InitState = function (Res)
+{
+    if(Res.Viaje === "on")
+    {
+        this.BtnEscena1.SetOn ();
+    }
+
+    if (Res.Alarma !== "00_00_mm")
+    {
+        this.BtnEscena2.SetOn ();
+    }
+}
 
 //Btn1 event
 EscenasCtrl.prototype.Btn1Event = function ()
@@ -711,12 +740,14 @@ EscenasCtrl.prototype.Btn1Event = function ()
         this.BtnEscena1.SetOn ();
         this.Btn1State = true;
         this.TimerVacaiones = setInterval (this.LuzAleatoria.bind(this), 1000*10);
+        new Gwt.Core.Rpc('/viajectrl/on').Send({}, function (Res){console.log(Res);});
     }
     else
     {
         this.BtnEscena1.SetOff ();
         this.Btn1State = false;
         clearInterval (this.TimerVacaiones);
+        new Gwt.Core.Rpc('/viajectrl/off').Send({}, function (Res){console.log(Res);});
     }
 };
 
