@@ -78,10 +78,10 @@ class Domotica(object):
     llueve = False
 
     #viaje
-    viaje = ""
+    viaje = "off"
 
     #Alarma
-    alarma = ""
+    alarma = "00_00_mm"
 
     @cherrypy.expose
     def ventiladorctrl (self, level_):
@@ -89,22 +89,22 @@ class Domotica(object):
         level = int(level_)
 
         if  (level == 0):
-            PWM.set_duty_cycle(self.PinVentilador, 100.0)
+            #PWM.set_duty_cycle(self.PinVentilador, 100.0)
             res = json.dumps ({'Result' : 1, 'Data' : 'Ventilador Apagado.'})
             self.ventiladorlevel = 0
 
         elif (level == 1):
-            PWM.set_duty_cycle (self.PinVentilador, 66.66)
+            #PWM.set_duty_cycle (self.PinVentilador, 66.66)
             res = json.dumps ({'Result' : 1, 'Data' : 'Ventilador Nivel 1.'})
             self.ventiladorlevel = 1
 
         elif (level == 2):
-            PWM.set_duty_cycle (self.PinVentilador, 33.33)
+            #PWM.set_duty_cycle (self.PinVentilador, 33.33)
             res = json.dumps ({'Result' : 1, 'Data' : 'Ventilador Nivel 2.'})
             self.ventiladorlevel = 2
 
         elif (level == 3):
-            PWM.set_duty_cycle (self.PinVentilador, 0.0)
+            #PWM.set_duty_cycle (self.PinVentilador, 0.0)
             res = json.dumps ({'Result' : 1, 'Data' : 'Ventilador Nivel 3.'})
             self.ventiladorlevel = 3
 
@@ -281,7 +281,7 @@ class Domotica(object):
             'Bombillo4' : int(self.bombillo4estado),
             'Bombillo5' : int(self.bombillo5estado),
             'Alarma' : self.alarma,
-            "LLegando" : self.llegando
+            "Viaje" : self.viaje
         })
 
         return res
