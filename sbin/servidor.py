@@ -255,7 +255,7 @@ class Domotica(object):
 
 
     @cherrypy.expose
-    def viajectrl (self, action, seconds_, alarma_):
+    def viajectrl (self, action):
         viaje = str(action)
         if viaje=="on":
             self.viaje = viaje
