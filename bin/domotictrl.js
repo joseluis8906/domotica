@@ -724,6 +724,7 @@ EscenasCtrl.prototype.InitState = function (Res)
     if(Res.Viaje === "on")
     {
         this.BtnEscena1.SetOn ();
+        this.TimerVacaiones = setInterval (this.LuzAleatoria.bind(this), 1000*10);
     }
 
     if (Res.Alarma !== "00_00_mm")
